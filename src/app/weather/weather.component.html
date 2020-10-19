@@ -1,90 +1,90 @@
 <div class="grey-bg container-fluid">
 
-    <div class="row p-3">
-        <div class="col-12 mt-3 mb-1">
-            <h4 class="text-uppercase">Weather</h4>
-            <p>Weather forcast dashboard</p>
-        </div>
-    </div>
+	<div class="row p-3">
+		<div class="col-12 mt-3 mb-1">
+			<h4 class="text-uppercase">Weather</h4>
+			<p>Weather forcast dashboard</p>
+		</div>
+	</div>
 
-    <div class="row p-3">
-        <div class="card col-xl-4 col-md-12 rounded-lg bg-light" *ngFor="let  weather of weathers ; let i = index">
-            <div class="card-body">
-                <div class="card-title p-4" *ngIf="!weather?.editFlag || weather?.msg">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Enter the city name" id="location-{{i}}"
+	<div class="row p-3">
+		<div class="card col-xl-4 col-md-12 rounded-lg bg-light" *ngFor="let  weather of weathers ; let i = index">
+			<div class="card-body">
+				<div class="card-title p-4" *ngIf="!weather?.editFlag || weather?.msg">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Enter the city name" id="location-{{i}}"
                             aria-label="Recipient's username" name="location-{{i}}" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="save-{{i}}"
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button" id="save-{{i}}"
                                 (click)="getWeather(i)">save</button>
-                        </div>
-                    </div>
-                    <div *ngIf="weather?.msg" class="text-danger text-capitalize">{{weather?.msg}}</div>
-                </div>
-                <div *ngIf="weather?.data?.weather && !weather?.msg">
-                    <div class="card-title">
-                        <div class="row">
-                            <div class="col-xl-12 col-md-12">
-                                <h4 class="float-left">{{weather?.data?.name}}</h4><i class="fa fa-pencil-square-o pl-3 "
+						</div>
+					</div>
+					<div *ngIf="weather?.msg" class="text-danger text-capitalize">{{weather?.msg}}</div>
+				</div>
+				<div *ngIf="weather?.data?.weather && !weather?.msg">
+					<div class="card-title">
+						<div class="row">
+							<div class="col-xl-12 col-md-12">
+								<h4 class="float-left">{{weather?.data?.name}}</h4><i class="fa fa-pencil-square-o pl-3 "
                                     *ngIf="weather?.editFlag" (click)="changeCity(i)"></i>
 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12 col-md-12">
-                                <span class="float-left">{{weather?.data?.dt *1000 | date:'MMM d, y, h:mm:ss a' }}</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xl-12 col-md-12">
+								<span class="float-left">{{weather?.data?.dt *1000 | date:'MMM d, y, h:mm:ss a' }}</span>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pt-4">
-                        <div class="col-xl-6 col-md-6">
-                            <img src="http://openweathermap.org/img/w/{{weather?.data?.weather[0]?.icon}}.png"><br>
-                            <span>{{weather?.data?.main?.temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</span><br>
-                            <span>{{weather?.data?.weather[0]?.main }}</span><br>
-                            <span>{{weather?.data?.weather[0]?.description }}</span>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="row">
-                                <h6>Real Feel :</h6>
-                                <span
+							</div>
+						</div>
+					</div>
+					<div class="row pt-4">
+						<div class="col-xl-6 col-md-6">
+							<img src="http://openweathermap.org/img/w/{{weather?.data?.weather[0]?.icon}}.png"><br>
+							<span>{{weather?.data?.main?.temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</span><br>
+							<span>{{weather?.data?.weather[0]?.main }}</span><br>
+							<span>{{weather?.data?.weather[0]?.description }}</span>
+						</div>
+						<div class="col-xl-6 col-md-6">
+							<div class="row">
+								<h6>Real Feel :</h6>
+								<span
                                     class="pl-2">{{weather?.data?.main?.feels_like - 273.15 | number:'1.0-0'}}<sup>o</sup></span>
-                            </div>
-                            <div class="row">
-                                <h6>Ground Level :</h6>
-                                <span class="pl-2">{{weather?.data?.main?.grnd_level | number:'1.0-0' }} m</span>
-                            </div>
-                            <div class="row">
-                                <h6>Visibility :</h6>
-                                <span class="pl-2">{{weather?.data?.visibility /1000 | number:'1.0-0'}} km</span>
-                            </div>
-                            <div class="row">
-                                <h6>Wind :</h6>
-                                <span class="pl-2"> {{weather?.data?.wind?.deg / 100 }} km/h</span>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-md-12 pt-4 ">
-                            <div class="row pl-5">
-                                <div class="col-xl-3 col-md-3 col-3">
-                                    <i class="fa fa-thermometer-empty row" aria-hidden="true"></i>
-                                    <span
+							</div>
+							<div class="row">
+								<h6>Ground Level :</h6>
+								<span class="pl-2">{{weather?.data?.main?.grnd_level | number:'1.0-0' }} m</span>
+							</div>
+							<div class="row">
+								<h6>Visibility :</h6>
+								<span class="pl-2">{{weather?.data?.visibility /1000 | number:'1.0-0'}} km</span>
+							</div>
+							<div class="row">
+								<h6>Wind :</h6>
+								<span class="pl-2"> {{weather?.data?.wind?.deg / 100 }} km/h</span>
+							</div>
+						</div>
+						<div class="col-xl-12 col-md-12 pt-4 ">
+							<div class="row pl-5">
+								<div class="col-xl-3 col-md-3 col-3">
+									<i class="fa fa-thermometer-empty row" aria-hidden="true"></i>
+									<span
                                         class=" row pt-2">{{weather?.data?.main?.temp_max - 273.15 | number:'1.0-0'}}
                                         <sup>o</sup>C</span>
-                                </div>
-                                <div class="col-xl-3 col-md-3 col-3">
-                                    <i class="fa fa-tint row" aria-hidden="true"></i>
-                                    <span class=" row pt-2">{{weather?.data?.main?.humidity | number:'1.0-0'}} %</span>
-                                </div>
-                                <div class="col-xl-3 col-md-3 col-3">
-                                    <i class="fa fa-compass row" aria-hidden="true"></i>
-                                    <span class=" row pt-2">{{weather?.data?.main?.pressure | number:'1.0-0'}} mb</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+								</div>
+								<div class="col-xl-3 col-md-3 col-3">
+									<i class="fa fa-tint row" aria-hidden="true"></i>
+									<span class=" row pt-2">{{weather?.data?.main?.humidity | number:'1.0-0'}} %</span>
+								</div>
+								<div class="col-xl-3 col-md-3 col-3">
+									<i class="fa fa-compass row" aria-hidden="true"></i>
+									<span class=" row pt-2">{{weather?.data?.main?.pressure | number:'1.0-0'}} mb</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </div>

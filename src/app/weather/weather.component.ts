@@ -19,7 +19,11 @@ export class WeatherComponent implements OnInit {
   }
 
   getWeather(i) {
-    let city = (<HTMLInputElement>document.getElementById("location-" + i))
+    console.log(
+      "the valueis ",
+      (document.getElementById("location-" + i) as HTMLInputElement).value
+    );
+    let city = (document.getElementById("location-" + i) as HTMLInputElement)
       .value;
     this.service.getWeather(city).subscribe(
       res => {
