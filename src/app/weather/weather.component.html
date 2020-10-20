@@ -12,8 +12,7 @@
 			<div class="card-body">
 				<div class="card-title p-4" *ngIf="!weather?.editFlag || weather?.msg">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Enter the city name" id="location-{{i}}"
-                            aria-label="Recipient's username" name="location-{{i}}" aria-describedby="button-addon2">
+						<input type="text" class="form-control" placeholder="Enter the city name" id="location-{{i}}"aria-describedby="button-addon2">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" type="button" id="save-{{i}}"
                                 (click)="getWeather(i)">save</button>
@@ -40,19 +39,14 @@
 					<div class="row pt-4">
 						<div class="col-xl-6 col-md-6">
 							<img src="http://openweathermap.org/img/w/{{weather?.data?.weather[0]?.icon}}.png"><br>
-							<span>{{weather?.data?.main?.temp - 273.15 | number:'1.0-0'}}<sup>o</sup>C</span><br>
+							<span>{{weather?.data?.main?.temp | number:'1.0-0'}}<sup>o</sup>C</span><br>
 							<span>{{weather?.data?.weather[0]?.main }}</span><br>
 							<span>{{weather?.data?.weather[0]?.description }}</span>
 						</div>
 						<div class="col-xl-6 col-md-6">
 							<div class="row">
 								<h6>Real Feel :</h6>
-								<span
-                                    class="pl-2">{{weather?.data?.main?.feels_like - 273.15 | number:'1.0-0'}}<sup>o</sup></span>
-							</div>
-							<div class="row">
-								<h6>Ground Level :</h6>
-								<span class="pl-2">{{weather?.data?.main?.grnd_level | number:'1.0-0' }} m</span>
+								<span class="pl-2">{{weather?.data?.main?.feels_like | number:'1.0-0'}}<sup>o</sup></span>
 							</div>
 							<div class="row">
 								<h6>Visibility :</h6>
@@ -68,7 +62,7 @@
 								<div class="col-xl-3 col-md-3 col-3">
 									<i class="fa fa-thermometer-empty row" aria-hidden="true"></i>
 									<span
-                                        class=" row pt-2">{{weather?.data?.main?.temp_max - 273.15 | number:'1.0-0'}}
+                                        class=" row pt-2">{{weather?.data?.main?.temp_max | number:'1.0-0'}}
                                         <sup>o</sup>C</span>
 								</div>
 								<div class="col-xl-3 col-md-3 col-3">
